@@ -8,7 +8,7 @@ return main($argv);
 function main($argv)
 {
     $try_files = array(
-        __DIR__ . '/../../autoload.php',
+        __DIR__ . '/../../../autoload.php',
         __DIR__ . '/../vendor/autoload.php'
     );
 
