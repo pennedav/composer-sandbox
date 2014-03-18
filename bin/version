@@ -1,4 +1,34 @@
 #!/usr/bin/env php
 <?php
 
-require __DIR__ . '/version.php';
+use Pennedav\Composer\Sandbox\Sandbox as ComposerSandbox;
+
+return main($argv);
+
+function main($argv)
+{
+    $try_files = array(
+        __DIR__ . '/../../autoload.php',
+        __DIR__ . '/../vendor/autoload.php'
+    );
+
+    foreach ($try_files as $i => $file) {
+        echo "Try #{$i}: '$file'";
+        if (file_exists($file)) {
+            $file = realpath($file);
+            echo " [success]\nRequire: '$file' (#$i)\n";
+            require $file;
+            break;
+        } else {
+            echo " [fail]\n";
+        }
+    }
+
+    foreach ($argv as $i => $arg) {
+        echo "Arg[$i]: '$arg'\n";
+    }
+
+    echo "Version: " . ComposerSandbox::VERSION . "\n";
+
+    return 0;
+}
