@@ -1,4 +1,4 @@
 composer-sandbox
 ================
 
-Sandbox for testing out a composer library
+Sandbox for testing out a composer library.
